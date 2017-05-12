@@ -73,8 +73,8 @@ export default class FormSubmitComponent extends Component{
         }).catch(err => console.log(err));
       }else{
         res.json()
-        .then(result => {
-          console.log(result);
+        .then(newVideo => {
+          PubSub.publish('update-vide-player', newVideo);
         }).catch(err => console.log(err));
       }
     });
