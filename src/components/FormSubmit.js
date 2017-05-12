@@ -7,7 +7,7 @@ export default class FormSubmitComponent extends Component{
     super();
     this.state = {
       msgErro: '',
-      music: '',
+      musicUrl: '',
       formClasses: ['musicForm']
     };
 
@@ -21,7 +21,7 @@ export default class FormSubmitComponent extends Component{
         <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
           <label>
             Send Music
-            <input type="text" name="musicField" value={this.state.music} onChange={this.setMusic}/>
+            <input type="text" name="musicField" value={this.state.musicUrl} onChange={this.setMusic}/>
           </label>
           <span className="error">{this.state.msgErro}</span>
           <button type="submit" className="pure-button pure-button-primary">Send</button>
@@ -31,7 +31,7 @@ export default class FormSubmitComponent extends Component{
   }
 
   setMusic(evento){
-    this.setState({music: evento.target.value});
+    this.setState({musicUrl: evento.target.value});
   }
 
   componentDidMount(){
@@ -46,17 +46,18 @@ export default class FormSubmitComponent extends Component{
     });
 
     PubSub.subscribe('update-class-list', (topico, obj) => {
-      
+
     });
   }
 
   enviaForm(evento){
     evento.preventDefault();
 
-    fetch('http://localhost:8080/api/autores', {
+    fetch('https://boomrang-server.herokuapp.com/musics/', {
       headers:{'Content-type': 'application/json'},
       method: 'post',
-      body: JSON.stringify({nome:this.state.nome, email:this.state.email, senha:this.state.senha})
+      mode: 'cors',
+      body: JSON.stringify({link: this.state.musicUrl, mood_id: 6})
     }).then(res => {
       PubSub.publish("limpa-erros", {});
 
@@ -66,20 +67,14 @@ export default class FormSubmitComponent extends Component{
 
         res.json()
         .then(err => {
-          err.errors.forEach((erro) => console.log(`o campo ${erro.field} não pode estar vazio.`));
+          err.errors.forEach((erro) => console.log(`o mood não existe.`));
 
           new TratadorErros().publicaErros(err);
         }).catch(err => console.log(err));
       }else{
         res.json()
-        .then(novaListagem => {
-          console.log(novaListagem);
-          PubSub.publish('atualiza-lista-autores', novaListagem);
-          this.setState({
-            nome: '',
-            email: '',
-            senha: ''
-          });
+        .then(result => {
+          console.log(result);
         }).catch(err => console.log(err));
       }
     });
