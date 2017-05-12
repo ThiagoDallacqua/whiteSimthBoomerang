@@ -24,7 +24,6 @@ export default class MusicComponent extends Component{
         <YouTube
           videoId={this.state.videoId}
           opts={opts}
-          onReady={this._onReady}
         />
       </div>
     );
