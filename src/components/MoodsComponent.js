@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import FormSubmitComponent from './FormSubmit';
 import MusicComponent from './MusicComponent';
+import PubSub from 'pubsub-js';
 
 export default class MoodsComponent extends Component{
   render(){
@@ -18,7 +19,7 @@ export default class MoodsComponent extends Component{
                             GAMING
                         </span>
                     </div>
-                    <button className="button-choose pure-button">Choose</button>
+                    <button className="button-choose pure-button" onClick={this.moodButton}>Choose</button>
                 </div>
             </div>
 
@@ -29,7 +30,7 @@ export default class MoodsComponent extends Component{
                             PARTY
                         </span>
                     </div>
-                    <button className="button-choose pure-button">Choose</button>
+                    <button className="button-choose pure-button" onClick={this.moodButton}>Choose</button>
                 </div>
             </div>
 
@@ -40,7 +41,7 @@ export default class MoodsComponent extends Component{
                             RELAX
                         </span>
                     </div>
-                    <button className="button-choose pure-button">Choose</button>
+                    <button className="button-choose pure-button" onClick={this.moodButton}>Choose</button>
                 </div>
             </div>
 
@@ -51,11 +52,15 @@ export default class MoodsComponent extends Component{
                             PUMP ME UP
                         </span>
                     </div>
-                    <button className="button-choose pure-button">Choose</button>
+                    <button className="button-choose pure-button" onClick={this.moodButton}>Choose</button>
                 </div>
             </div>
         </div>
       </div>
     );
+  }
+
+  moodButton(){
+    PubSub.publish('update-class-list', {newClass: 'toggleComponent'})
   }
 }

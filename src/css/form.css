@@ -1,8 +1,14 @@
 .musicForm{
   padding: 0 33%;
   margin: 30px auto;
+  display: none;
 }
 
 .musicMood{
   padding: 0 22%;
+  display: none;
+}
+
+.toggleComponnet{
+  display: block;
 }

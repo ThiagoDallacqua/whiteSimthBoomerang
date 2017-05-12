@@ -7,7 +7,8 @@ export default class FormSubmitComponent extends Component{
     super();
     this.state = {
       msgErro: '',
-      music: ''
+      music: '',
+      formClasses: ['musicForm']
     };
 
     this.enviaForm = this.enviaForm.bind(this);
@@ -16,7 +17,7 @@ export default class FormSubmitComponent extends Component{
 
   render(){
     return (
-      <div className="musicForm">
+      <div className={this.state.formClasses}>
         <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
           <label>
             Send Music
@@ -42,6 +43,10 @@ export default class FormSubmitComponent extends Component{
 
     PubSub.subscribe("limpa-erros", (topico, objVazio) => {
       this.setState({msgErro: ''});
+    });
+
+    PubSub.subscribe('update-class-list', (topico, obj) => {
+      
     });
   }
 
