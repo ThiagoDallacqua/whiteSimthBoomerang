@@ -11,14 +11,10 @@ class MoodButton extends Component{
   }
   render(){
     return (
-      <div className="pure-u-1 pure-u-md-1-3">
-        <div className="pricing-table pricing-table-free">
-          <div className="pricing-table-header">
-            <span className="pricing-table-price">
-              {this.props.name}
-            </span>
-          </div>
-          <button className="button-choose pure-button" onClick={this.onClick.bind(this)}>Choose</button>
+      <div className="col-md-4 text-center thumb" onClick={this.onClick.bind(this)}>
+        <h2>{this.props.name}</h2>
+        <div className="thumbnail" href="#">
+          <img className="img-responsive" src="http://placehold.it/400x300" alt="" />
         </div>
       </div>
     )
@@ -42,15 +38,18 @@ export default class MoodsComponent extends Component{
   render(){
     return (
       <div>
-        <MusicComponent />
+        <div className="container">
+          <MusicComponent />
+          <FormSubmitComponent setMusic={this.setMusic}/>
 
-        <FormSubmitComponent setMusic={this.setMusic}/>
-
-        <div className="pricing-tables pure-g">
-          <MoodButton name="GAMING" id="1" onClick={this.submitMusic}/>
-          <MoodButton name="PARTY" id="2" onClick={this.submitMusic}/>
-          <MoodButton name="RELAX" id="3" onClick={this.submitMusic}/>
-          <MoodButton name="PUMP ME UP" id="4" onClick={this.submitMusic}/>
+          <div className="row no-gutter">
+            <MoodButton name="RANDOM" id="11" onClick={this.submitMusic}/>
+            <MoodButton name="TROLL" id="12" onClick={this.submitMusic}/>
+            <MoodButton name="PARTY" id="13" onClick={this.submitMusic}/>
+            <MoodButton name="RELAX" id="14" onClick={this.submitMusic}/>
+            <MoodButton name="GLOOMY" id="15" onClick={this.submitMusic}/>
+            <MoodButton name="FUNKY" id="16" onClick={this.submitMusic}/>
+          </div>
         </div>
       </div>
     );

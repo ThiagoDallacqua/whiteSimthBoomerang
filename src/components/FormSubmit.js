@@ -6,24 +6,14 @@ export default class FormSubmitComponent extends Component{
   constructor(){
     super();
     this.state = {
-      msgErro: '',
       musicUrl: '',
-      formClasses: ['musicForm']
     };
     this.setMusic = this.setMusic.bind(this);
   }
 
   render(){
     return (
-      <div className={this.state.formClasses}>
-        <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
-          <label>
-            Send Music
-            <input type="text" name="musicField" value={this.state.musicUrl} onChange={this.setMusic}/>
-          </label>
-          <span className="error">{this.state.msgErro}</span>
-        </form>
-      </div>
+      <input type="text" className="text-center" placeholder="Paste a youtube link" id="addlink" value={this.state.musicUrl} onChange={this.setMusic}/>
     );
   }
 

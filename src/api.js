@@ -1,4 +1,4 @@
-const API_PATH = "http://localhost:3000/"
+const API_PATH = "https://boomrang-server.herokuapp.com/"
 
 const toJson = (response) => {
   return response.json();
