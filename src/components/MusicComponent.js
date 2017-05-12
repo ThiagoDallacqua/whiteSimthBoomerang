@@ -14,15 +14,10 @@ export default class MusicComponent extends Component{
     return (
       <div className="musicMood">
         <YouTube
-          videoId="9jK-NcRmVcw"
+          id={this.props.id}
           opts={opts}
-          onReady={this._onReady}
         />
       </div>
     );
-  }
-
-  _onReady(event) {
-    event.target.pauseVideo();
   }
 }
