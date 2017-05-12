@@ -37,6 +37,7 @@ export default class MoodsComponent extends Component{
   }
   setMusic(link){
     this.setState({link: link})
+    PubSub.publish('update-vide-player', link);
   }
   render(){
     return (
@@ -57,7 +58,8 @@ export default class MoodsComponent extends Component{
 
   submitMusic(mood_id){
     API.submitMusic(this.state.link, mood_id).then(function(response){
-      PubSub.publish('update-vide-player', response);
+      let link = response.link
+      PubSub.publish('update-vide-player', link);
     })
   }
 }

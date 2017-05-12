@@ -36,7 +36,7 @@ export default class MusicComponent extends Component{
   componentDidMount(){
     PubSub.subscribe('update-vide-player', (topico, newMusic) => {
       let separator = '=';
-      let videoId = newMusic.link.slice((newMusic.link.indexOf(separator) + 1), newMusic.link.length);
+      let videoId = newMusic.slice((newMusic.indexOf(separator) + 1), newMusic.length);
 
       this.setState({videoId: videoId});
     });
