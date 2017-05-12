@@ -12,8 +12,8 @@ class App extends Component {
     return (
         <div>
           <BannerComponent />
+          <MoodsComponent />
           <div className="l-content">
-            <MoodsComponent />
           </div>
         </div>
     );
