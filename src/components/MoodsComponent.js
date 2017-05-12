@@ -11,9 +11,9 @@ class MoodButton extends Component{
   }
   render(){
     return (
-      <div className="col-md-4 text-center thumb" onClick={this.onClick.bind(this)}>
+      <div className="col-md-4 text-center thumb" >
         <h2>{this.props.name}</h2>
-        <div className="thumbnail" href="#">
+        <div className="thumbnail" onClick={this.onClick.bind(this)}>
           <img className="img-responsive" src="http://placehold.it/400x300" alt="" />
         </div>
       </div>
