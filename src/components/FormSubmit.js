@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PubSub from 'pubsub-js';
-import API from '../api';
 
 export default class FormSubmitComponent extends Component{
   constructor(){
