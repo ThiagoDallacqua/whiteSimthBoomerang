@@ -6,7 +6,8 @@ export default class MusicComponent extends Component{
   constructor(){
     super();
     this.state = {
-      videoId: ''
+      videoId: '',
+      errorMesage: ''
     };
   }
 
@@ -24,7 +25,11 @@ export default class MusicComponent extends Component{
         <YouTube
           videoId={this.state.videoId}
           opts={opts}
+          onReady={this._onReady}
+          onError={this._onError}
         />
+
+        <span>{this.state.errorMesage}</span>
       </div>
     );
   }
@@ -33,10 +38,22 @@ export default class MusicComponent extends Component{
     event.target.pauseVideo();
   }
 
+  _onError(event) {
+    this.setState({errorMessage: 'Invalid video URL.'},
+  () => console.log(this.state.errorMesage));
+  }
+
   componentDidMount(){
     PubSub.subscribe('update-vide-player', (topico, newMusic) => {
       let separator = '=';
       let videoId = newMusic.link.slice((newMusic.link.indexOf(separator) + 1), newMusic.link.length);
+
+      this.setState({videoId: videoId});
+    });
+
+    PubSub.subscribe('check-video-url', (topico, newUrl) => {
+      let separator = '=';
+      let videoId = newUrl.slice((newUrl.indexOf(separator) + 1), newUrl.length);
 
       this.setState({videoId: videoId});
     });

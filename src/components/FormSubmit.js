@@ -21,7 +21,7 @@ export default class FormSubmitComponent extends Component{
         <form className="pure-form pure-form-aligned" onSubmit={this.enviaForm} method="post">
           <label>
             Send Music
-            <input type="text" name="musicField" value={this.state.musicUrl} onChange={this.setMusic}/>
+            <input type="text" name="musicField" value={this.state.musicUrl} placeholder="Place a valid YouTube video url" onChange={this.setMusic}/>
           </label>
           <span className="error">{this.state.msgErro}</span>
           <button type="submit" className="pure-button pure-button-primary">Send</button>
@@ -31,7 +31,8 @@ export default class FormSubmitComponent extends Component{
   }
 
   setMusic(evento){
-    this.setState({musicUrl: evento.target.value});
+    this.setState({musicUrl: evento.target.value},
+    () => PubSub.publish('check-video-url', this.state.musicUrl));
   }
 
   componentDidMount(){
