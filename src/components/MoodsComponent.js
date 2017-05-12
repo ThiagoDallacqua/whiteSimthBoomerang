@@ -42,6 +42,8 @@ export default class MoodsComponent extends Component{
           <MusicComponent />
           <FormSubmitComponent setMusic={this.setMusic}/>
 
+          <h2>place your song and set your mood</h2>
+
           <div className="row no-gutter">
             <MoodButton name="RANDOM" id="11" onClick={this.submitMusic}/>
             <MoodButton name="TROLL" id="12" onClick={this.submitMusic}/>

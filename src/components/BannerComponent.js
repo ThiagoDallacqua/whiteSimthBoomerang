@@ -5,8 +5,7 @@ export default class BannerComponent extends Component{
     return (
       <div className="banner">
         <h1 className="banner-head">
-          Simple Pricing.<br/>
-          Try before you buy.
+          Pick a tune from youtube and set your mood, Boomrang it to someone and listen what comes back.
         </h1>
       </div>
     );
