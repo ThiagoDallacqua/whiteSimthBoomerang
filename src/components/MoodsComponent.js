@@ -47,10 +47,10 @@ export default class MoodsComponent extends Component{
         <FormSubmitComponent setMusic={this.setMusic}/>
 
         <div className="pricing-tables pure-g">
-          <MoodButton name="GAMING" id="1" onClick={this.submitMusic}/>
-          <MoodButton name="PARTY" id="2" onClick={this.submitMusic}/>
-          <MoodButton name="RELAX" id="3" onClick={this.submitMusic}/>
-          <MoodButton name="PUMP ME UP" id="4" onClick={this.submitMusic}/>
+          <MoodButton name="GAMING" id="5" onClick={this.submitMusic}/>
+          <MoodButton name="PARTY" id="6" onClick={this.submitMusic}/>
+          <MoodButton name="RELAX" id="7" onClick={this.submitMusic}/>
+          <MoodButton name="PUMP ME UP" id="8" onClick={this.submitMusic}/>
         </div>
       </div>
     );
